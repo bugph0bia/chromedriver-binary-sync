@@ -15,14 +15,17 @@ import re
 import platform
 import glob
 import shutil
+import ssl
 import zipfile
 
 try:
     from io import BytesIO
     from urllib.request import urlopen, URLError
+    ssl_context = ssl.create_default_context()
 except ImportError:
     from StringIO import StringIO as BytesIO
     from urllib2 import urlopen, URLError
+    ssl_context = ssl.SSLContext(protocol=ssl.PROTOCOL_TLS)
 
 from chromedriver_binary.utils import get_chromedriver_filename, get_chromedriver_url, find_binary_in_path, \
     check_version, get_chrome_major_version, get_latest_release_for_version
@@ -76,7 +79,7 @@ def download(download_dir='.', chrome_portable=None, verbose=False):
                 os.mkdir(chromedriver_dir)
             url = get_chromedriver_url(version=chromedriver_version)
             try:
-                response = urlopen(url)
+                response = urlopen(url, context=ssl_context)
                 if response.getcode() != 200:
                     raise URLError('Not Found')
             except URLError:
@@ -85,7 +88,11 @@ def download(download_dir='.', chrome_portable=None, verbose=False):
             # unzip
             archive = BytesIO(response.read())
             with zipfile.ZipFile(archive) as zip_file:
-                zip_file.extract(chromedriver_bin, chromedriver_dir)
+                for filename in zip_file.namelist():
+                    zip_file.extract(filename, chromedriver_dir)
+                    path_elements = os.path.split(filename)
+                    if len(path_elements) > 1:
+                        os.rename(os.path.join(chromedriver_dir, filename), os.path.join(chromedriver_dir, path_elements[-1]))
         else:
             vprint(verbose, f'Chromedriver already installed at {chromedriver_filename}...')
 
