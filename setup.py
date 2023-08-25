@@ -26,6 +26,6 @@ setuptools.setup(
         'Operating System :: OS Independent',
     ],
     install_requires=[
-        'chromedriver-binary-auto',
+        'chromedriver-binary-auto>=0.3.1',
     ],
 )
