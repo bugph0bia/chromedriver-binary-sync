@@ -1,7 +1,7 @@
 chromedriver-binary-sync
 ===
 
-![Software Version](http://img.shields.io/badge/Version-v0.2.0-green.svg?style=flat)
+![Software Version](http://img.shields.io/badge/Version-v0.2.1-green.svg?style=flat)
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 
 [English Page](./README.md)
@@ -13,7 +13,7 @@ chromedriver-binary-sync
 - 内部で [chromedriver-binary-auto](https://pypi.org/project/chromedriver-binary-auto/) の機能を利用している。
     - こちらは、インストール時にバージョンを合わせる機能を持っている。
 
-## Requirements
+## 要件
 - chromedriver-binary-auto
 
 ## ライセンス

@@ -1,7 +1,7 @@
 chromedriver-binary-sync
 ===
 
-![Software Version](http://img.shields.io/badge/Version-v0.2.0-green.svg?style=flat)
+![Software Version](http://img.shields.io/badge/Version-v0.2.1-green.svg?style=flat)
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 
 [Japanese Page](./README.ja.md)

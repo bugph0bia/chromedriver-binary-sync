@@ -7,4 +7,4 @@ Test Procedure:
 import chromedriver_binary_sync
 
 
-chromedriver_binary_sync.download()
+chromedriver_binary_sync.download(verbose=True)
