@@ -92,7 +92,7 @@ def download(download_dir='.', chrome_portable=None, verbose=False):
                     zip_file.extract(filename, chromedriver_dir)
                     path_elements = os.path.split(filename)
                     if len(path_elements) > 1:
-                        os.rename(os.path.join(chromedriver_dir, filename), os.path.join(chromedriver_dir, path_elements[-1]))
+                        os.replace(os.path.join(chromedriver_dir, filename), os.path.join(chromedriver_dir, path_elements[-1]))
         else:
             vprint(verbose, f'Chromedriver already installed at {chromedriver_filename}...')
 
